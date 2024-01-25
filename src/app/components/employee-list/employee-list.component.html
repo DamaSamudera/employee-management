@@ -1,0 +1,101 @@
+<app-menu></app-menu>
+<div class="flex justify-content-between">
+  <h2>Employee List</h2>
+  <p-button
+    [style]="{ margin: '1rem' }"
+    icon="pi pi-plus"
+    label="Add Employee"
+    (click)="handleAdd()"
+  ></p-button>
+</div>
+<div class="card">
+  <p-table
+    [autoLayout]="true"
+    [globalFilterFields]="['username', 'firstName', 'lastName']"
+    [paginator]="true"
+    [rows]="5"
+    [rowsPerPageOptions]="[5, 10, 20]"
+    [resizableColumns]="true"
+    [value]="employee"
+    styleClass="p-datatable-striped"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>
+          Username
+          <p-columnFilter
+            type="text"
+            field="username"
+            display="menu"
+          ></p-columnFilter>
+        </th>
+        <th>
+          First Name
+          <p-columnFilter
+            type="text"
+            field="firstName"
+            display="menu"
+          ></p-columnFilter>
+        </th>
+        <th>
+          Last Name
+          <p-columnFilter
+            type="text"
+            field="lastName"
+            display="menu"
+          ></p-columnFilter>
+        </th>
+        <th>Email</th>
+        <th pSortableColumn="birthDate">
+          Birth Date<p-sortIcon field="birthDate"></p-sortIcon>
+        </th>
+        <th pSortableColumn="basicSalary">
+          Basic Salary<p-sortIcon field="basicSalary"></p-sortIcon>
+        </th>
+        <th>Status</th>
+        <th>Group</th>
+        <th pSortableColumn="description">
+          Description<p-sortIcon field="description"></p-sortIcon>
+        </th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-employee>
+      <tr>
+        <td>{{ employee.username }}</td>
+        <td>{{ employee.firstName }}</td>
+        <td>{{ employee.lastName }}</td>
+        <td>{{ employee.email }}</td>
+        <td>{{ employee.birthDate | date : "dd MMM yyyy" }}</td>
+        <td>{{ employee.basicSalary | currency : "IDR " }}</td>
+        <td>
+          <p-tag
+            [style]="{ width: '100%' }"
+            [value]="employee.status ? 'Active' : 'Non Active'"
+            [severity]="getStatus(employee.status)"
+          ></p-tag>
+        </td>
+        <td>{{ employee.group }}</td>
+        <td>{{ employee.description | date : "dd MMM yyyy" }}</td>
+        <td>
+          <p-button
+            label="Details"
+            [link]="true"
+            (click)="handleDetails(employee.uid)"
+            class="p-button-primary"
+          ></p-button>
+          <button
+            pButton
+            icon="pi pi-pencil"
+            class="p-button-rounded p-button-warning mr-2"
+          ></button>
+          <button
+            pButton
+            icon="pi pi-trash"
+            class="p-button-rounded p-button-danger"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

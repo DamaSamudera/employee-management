@@ -1,0 +1,154 @@
+<app-menu></app-menu>
+<form [formGroup]="addEmployeForm" (ngSubmit)="addEmployee()">
+  <div class="grid justify-content-center">
+    <div class="col-10">
+      <div class="card mx-auto">
+        <h2>Add Employee</h2>
+        <div class="p-fluid p-formgrid grid">
+          <div class="field col-12 md:col-6">
+            <label htmlFor="firstName">Firstname</label>
+            <input pInputText formControlName="firstName" type="text" />
+            <small
+              *ngIf="
+                firstName.invalid && (firstName.dirty || firstName.touched)
+              "
+              class="block p-error"
+            >
+              <div *ngIf="firstName.errors?.['required']">
+                First name is required.
+              </div>
+              <div *ngIf="firstName.errors?.['pattern']">
+                Enter a valid Name
+              </div>
+            </small>
+          </div>
+          <div class="field col-12 md:col-6">
+            <label htmlFor="lastName">Lastname</label>
+            <input pInputText formControlName="lastName" type="text" />
+            <small
+              *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
+              class="block p-error"
+            >
+              <div *ngIf="lastName.errors?.['required']">
+                Last name is required.
+              </div>
+              <div *ngIf="lastName.errors?.['pattern']">Enter a valid Name</div>
+            </small>
+          </div>
+          <div class="field col-12 md:col-6">
+            <label htmlFor="username">Username</label>
+            <input pInputText formControlName="username" type="text" />
+            <small
+              *ngIf="username.invalid && (username.dirty || username.touched)"
+              class="block p-error"
+            >
+              <div *ngIf="username.errors?.['required']">
+                Username is required.
+              </div>
+            </small>
+          </div>
+          <div class="field col-12 md:col-6">
+            <label htmlFor="email">Email</label>
+            <input pInputText formControlName="email" type="text" />
+            <small
+              *ngIf="email.invalid && (email.dirty || email.touched)"
+              class="block p-error"
+            >
+              <div *ngIf="email.errors?.['required']">Email is required.</div>
+              <div *ngIf="email.errors?.['email']">Email should be valid</div>
+            </small>
+          </div>
+          <div class="field col-12 md:col-6">
+            <label htmlFor="birthDate">Birth Date</label>
+            <p-calendar
+              [maxDate]="dateTime"
+              formControlName="birthDate"
+              [showIcon]="true"
+            ></p-calendar>
+            <small
+              *ngIf="
+                birthDate.invalid && (birthDate.dirty || birthDate.touched)
+              "
+              class="block p-error"
+            >
+              <div *ngIf="birthDate.errors?.['required']">
+                Birth Date is required.
+              </div>
+            </small>
+          </div>
+          <div class="field col-12 md:col-6">
+            <label htmlFor="basicSalary">Basic Salary</label>
+            <p-inputNumber
+              formControlName="basicSalary"
+              inputId="basicSalary"
+              mode="currency"
+              currency="IDR"
+              locale="en-US"
+            >
+            </p-inputNumber>
+            <small
+              *ngIf="
+                basicSalary.invalid &&
+                (basicSalary.dirty || basicSalary.touched)
+              "
+              class="block p-error"
+            >
+              <div *ngIf="basicSalary.errors?.['required']">
+                Basic salary is required.
+              </div>
+            </small>
+          </div>
+          <div class="field col-12 md:col-3">
+            <label htmlFor="group">Group</label>
+            <p-dropdown
+              formControlName="selectedGroup"
+              [options]="groupItems"
+              optionLabel="name"
+              placeholder="Select a Group"
+            ></p-dropdown>
+            <small
+              *ngIf="group.invalid && (group.dirty || group.touched)"
+              class="block p-error"
+            >
+              <div *ngIf="group.errors?.['required']">Group is required.</div>
+            </small>
+          </div>
+          <div class="field col-12 md:col-3">
+            <label htmlFor="status">Status</label>
+            <input pInputText id="zip" type="text" />
+            <small
+              *ngIf="status.invalid && (status.dirty || status.touched)"
+              class="block p-error"
+            >
+              <div *ngIf="status.errors?.['required']">Status is required.</div>
+            </small>
+          </div>
+          <div class="field col-12 md:col-6">
+            <label htmlFor="description">Description</label>
+            <p-calendar
+              formControlName="description"
+              [showIcon]="true"
+            ></p-calendar>
+            <small
+              *ngIf="
+                description.invalid &&
+                (description.dirty || description.touched)
+              "
+              class="block p-error"
+            >
+              <div *ngIf="description.errors?.['required']">
+                Description is required.
+              </div>
+            </small>
+          </div>
+        </div>
+        <p-button
+          [disabled]="addEmployeForm.invalid"
+          label="Save"
+          styleClass="w-full"
+          type="submit"
+        ></p-button>
+      </div>
+    </div>
+  </div>
+</form>

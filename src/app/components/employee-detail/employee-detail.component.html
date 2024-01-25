@@ -1,0 +1,90 @@
+<div class="grid justify-content-center">
+  <div class="col-6 mt-8">
+    <p-button
+      icon="pi pi-arrow-circle-left"
+      (click)="goBack()"
+      [style]="{ margintop: '1rem', float: 'right' }"
+      label="Back to Employee List"
+    ></p-button>
+    <p-card header="Employee Details">
+      <div class="grid">
+        <div class="col">
+          <div class="p-3">
+            <label class="font-bold" htmlFor="firstName">First Name</label>
+            <p>{{ employee[0].firstName }}</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="p-3">
+            <label class="font-bold" htmlFor="lastName">Last Name</label>
+            <p>{{ employee[0].lastName }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="col">
+          <div class="p-3">
+            <label class="font-bold" htmlFor="username">Username</label>
+            <p>{{ employee[0].username }}</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="p-3">
+            <label class="font-bold" htmlFor="email">Email</label>
+            <p>{{ employee[0].email }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="col">
+          <div class="p-3">
+            <label class="font-bold" htmlFor="birthDate">Birth Date</label>
+            <p>{{ employee[0].birthDate | date : "dd MMM YYYY" }}</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="p-3">
+            <label class="font-bold" htmlFor="basicSalary">Basic Salary</label>
+            <p>{{ employee[0].basicSalary | currency : "IDR " }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="col">
+          <div class="p-3">
+            <label class="font-bold" htmlFor="birthDate">Birth Date</label>
+            <p>{{ employee[0].birthDate | date : "dd MMM YYYY" }}</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="p-3">
+            <label class="font-bold" htmlFor="basicSalary">Basic Salary</label>
+            <p>{{ employee[0].basicSalary | currency : "IDR " }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="col">
+          <div class="p-3">
+            <label class="font-bold" htmlFor="status">Status</label>
+            <p>{{ employee[0].status }}</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="p-3">
+            <label class="font-bold" htmlFor="group">Group</label>
+            <p>{{ employee[0].group }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="col">
+          <div class="p-3">
+            <label class="font-bold" htmlFor="description">Description</label>
+            <p>{{ employee[0].description | date : "dd MMM YYYY" }}</p>
+          </div>
+        </div>
+      </div>
+    </p-card>
+  </div>
+</div>
